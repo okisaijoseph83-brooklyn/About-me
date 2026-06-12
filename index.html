@@ -1,44 +1,88 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About me</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Simple Portfolio</title>
+	<style>
+		:root{--bg:#0f1724;--card:#0b1220;--accent:#06b6d4;--muted:#94a3b8;--text:#e6eef8}
+		*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial;background:linear-gradient(180deg,#071029 0%,var(--bg)100%);color:var(--text);line-height:1.5}
+		.container{max-width:900px;margin:40px auto;padding:24px}
+		header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+		.brand{display:flex;gap:12px;align-items:center}
+		.avatar{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:inline-flex;align-items:center;justify-content:center;font-weight:700}
+		h1{font-size:20px;margin:0}
+		p.lead{color:var(--muted);margin:4px 0 0}
+		nav a{color:var(--text);text-decoration:none;margin-left:12px;padding:8px 10px;border-radius:8px}
+		nav a:hover{background:rgba(255,255,255,0.03)}
+		.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:18px;border-radius:12px;margin-bottom:18px}
+		h2{margin:0 0 8px;font-size:16px}
+		.skills{display:flex;flex-wrap:wrap;gap:8px}
+		.skill{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;color:var(--muted);font-size:13px}
+		.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+		.proj{background:var(--card);padding:12px;border-radius:10px}
+		.proj h3{margin:0 0 6px;font-size:14px}
+		.footer{color:var(--muted);text-align:center;margin-top:26px;font-size:13px}
+		.contact a{color:var(--accent);text-decoration:none}
+		@media (max-width:520px){.container{margin:20px;padding:16px}.brand h1{font-size:18px}}
+	</style>
 </head>
 <body>
-    <header>
-        <h1>Joseph Okisai</h1>
-        <p>Joseph Okisai a Web developer with a passion for clean, modern design</p>
-    </header>
-    <main>
-        <section>
-            <h2>About Me</h2>
-            <p>Hi, I'm a web developer who builds responsive websites and interactive user experiences. I enjoy working with HTML, CSS, and JavaScript to create polished and accessible web applications.</p>
-        </section>
-        <section>
-            <h2>Projects</h2>
-            <div class="projects">
-                <div class="project-card">
-                    <h3>Project One</h3>
-                    <p>A landing page for a modern startup with responsive layout and clean visuals.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Project Two</h3>
-                    <p>An interactive portfolio site featuring animations and a smooth user interface.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Project Three</h3>
-                    <p>A small business website with a contact form and gallery section.</p>
-                </div>
-            </div>
-        </section>
-        <section>
-            <h2>Contact</h2>
-            <p>Want to work together? Send me an email at <a href="mailto:hello@example.com">hello@example.com</a>.</p>
-        </section>
-    </main>
-    <footer>
-        <p>Joseph Made with HTML and CSS.</p>
-    </footer>
+	<div class="container">
+		<header>
+			<div class="brand">
+				<div class="avatar">A</div>
+				<div>
+					<h1>Joseph Okisai a Developer</h1>
+					<p class="lead">Frontend developer • UI enthusiast • Building simple, useful apps</p>
+				</div>
+			</div>
+			<nav>
+				<a href="#about">About</a>
+				<a href="#projects">Projects</a>
+				<a href="#contact">Contact</a>
+			</nav>
+		</header>
+
+		<section id="about" class="card">
+			<h2>About Me</h2>
+			<p>I'm a developer who loves creating clean interfaces and fast, accessible web experiences. I work with HTML, CSS and JavaScript and enjoy learning new tools.</p>
+			<div style="margin-top:12px">
+				<strong>Skills</strong>
+				<div class="skills" style="margin-top:8px">
+					<span class="skill">HTML</span>
+					<span class="skill">CSS</span>
+					<span class="skill">JavaScript</span>
+					<span class="skill">React</span>
+					<span class="skill">Git</span>
+				</div>
+			</div>
+		</section>
+
+		<section id="projects">
+			<h2 style="margin-bottom:10px">Projects</h2>
+			<div class="projects">
+				<article class="proj">
+					<h3>Portfolio Website</h3>
+					<p class="lead" style="margin:0;color:var(--muted);font-size:13px">A minimal, responsive personal site built with HTML and CSS.</p>
+				</article>
+				<article class="proj">
+					<h3>Task Manager</h3>
+					<p class="lead" style="margin:0;color:var(--muted);font-size:13px">A small React app to create and organize daily tasks.</p>
+				</article>
+				<article class="proj">
+					<h3>Weather Widget</h3>
+					<p class="lead" style="margin:0;color:var(--muted);font-size:13px">A compact widget that shows current weather using a public API.</p>
+				</article>
+			</div>
+		</section>
+
+		<section id="contact" class="card">
+			<h2>Contact</h2>
+			<p class="lead">Want to work together or say hello? Email me at <a class="contact" href="mailto:alex@example.com">alex@example.com</a></p>
+		</section>
+
+		<div class="footer">© 2026 Joseph Okisai — Built with simple HTML & CSS</div>
+	</div>
 </body>
 </html>
