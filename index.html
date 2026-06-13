@@ -3,102 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Player</title>
+    <title>My Portfolio</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
+            margin: 0;
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #f5f7fb;
+            color: #333;
         }
-        .container {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            max-width: 400px;
-            width: 100%;
-        }
-        h1 {
+        header {
+            background: #1b2b47;
+            color: #fff;
+            padding: 40px 20px;
             text-align: center;
-            margin-bottom: 30px;
-            color: #333;
         }
-        audio {
-            width: 100%;
+        header h1 {
+            margin: 0 0 10px;
+            font-size: 2.4rem;
+        }
+        header p {
+            margin: 0;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        main {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        section {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            padding: 30px;
             margin-bottom: 20px;
-            outline: none;
         }
-        .playlist {
-            margin-top: 30px;
+        section h2 {
+            margin-top: 0;
+            color: #1b2b47;
         }
-        .playlist h2 {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: #333;
+        .grid {
+            display: grid;
+            gap: 18px;
         }
-        .song-item {
-            padding: 10px 15px;
-            margin-bottom: 10px;
-            background: #f5f5f5;
+        .skills, .projects {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+        .card {
+            background: #f9fbff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 18px;
+        }
+        .card h3 {
+            margin-top: 0;
+            font-size: 1.05rem;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.95rem;
+            color: #666;
+        }
+        a.button {
+            display: inline-block;
+            background: #1b2b47;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 24px;
             border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .song-item:hover {
-            background: #e0e0e0;
-        }
-        .song-item.active {
-            background: #667eea;
-            color: white;
+            margin-top: 15px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🎵 Music Player</h1>
-        <audio id="player" controls>
-            Your browser does not support the audio element.
-        </audio>
-        
-        <div class="playlist">
-            <h2>Playlist</h2>
-            <div class="song-item active" data-src="https://soundcloud.com/travisscott-2/travis-scott-fe-n?in=trendalert/sets/fein-travis-scott-playboi">
-                Sample Song 1
+    <header>
+        <h1>Jane Doe</h1>
+        <p>Web designer and developer building clean, user-friendly websites.</p>
+    </header>
+    <main>
+        <section>
+            <h2>About Me</h2>
+            <p>I am a front-end developer with a passion for creating engaging digital experiences. I enjoy working with HTML, CSS, and JavaScript to bring ideas to life.</p>
+        </section>
+        <section>
+            <h2>Skills</h2>
+            <div class="grid skills">
+                <div class="card">
+                    <h3>HTML & CSS</h3>
+                    <p>Responsive layouts, grid, flexbox, and modern styling techniques.</p>
+                </div>
+                <div class="card">
+                    <h3>JavaScript</h3>
+                    <p>Interactive interfaces, DOM manipulation, and simple web applications.</p>
+                </div>
+                <div class="card">
+                    <h3>UI Design</h3>
+                    <p>Clean visual design, usability, and basic branding principles.</p>
+                </div>
             </div>
-            <div class="song-item" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
-                Sample Song 2
+        </section>
+        <section>
+            <h2>Projects</h2>
+            <div class="grid projects">
+                <div class="card">
+                    <h3>Portfolio Site</h3>
+                    <p>A personal website showcasing work, experience, and contact information.</p>
+                </div>
+                <div class="card">
+                    <h3>Landing Page</h3>
+                    <p>A product landing page with a responsive hero section and pricing details.</p>
+                </div>
+                <div class="card">
+                    <h3>Blog Template</h3>
+                    <p>A modern blog layout with articles, categories, and clean typography.</p>
+                </div>
             </div>
-            <div class="song-item" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">
-                Sample Song 3
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const player = document.getElementById('player');
-        const songItems = document.querySelectorAll('.song-item');
-
-        songItems.forEach(item => {
-            item.addEventListener('click', function() {
-                const src = this.getAttribute('data-src');
-                player.src = src;
-                player.play();
-
-                songItems.forEach(song => song.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
-        // Load first song on page load
-        player.src = songItems[0].getAttribute('data-src');
-    </script>
+        </section>
+        <section>
+            <h2>Contact</h2>
+            <p>If you'd like to work together, feel free to reach out.</p>
+            <a class="button" href="mailto:hello@example.com">Send an Email</a>
+        </section>
+    </main>
+    <footer>
+        © 2026 Jane Doe. Built with HTML and CSS.
+    </footer>
 </body>
 </html>
