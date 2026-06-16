@@ -1,133 +1,88 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joseph Okisai</title>
+    <title>My Portfolio</title>
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #013295;
-            color: #161dde;
-        }
-        header {
-            background: #f0f0f3;
-            color: #f4efeff8;
-            padding: 40px 20px;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0 0 10px;
-            font-size: 2.4rem;
-        }
-        header p {
-            margin: 0;
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-        main {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-        section {
-            background: #0a0300;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            padding: 30px;
-            margin-bottom: 20px;
-        }
-        section h2 {
-            margin-top: 0;
-            color: #4636fb;
-        }
-        .grid {
-            display: grid;
-            gap: 18px;
-        }
-        .skills, .projects {
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        }
-        .card {
-            background: #074bd2;
-            border: 1px solid #0f0f0f;
-            border-radius: 10px;
-            padding: 18px;
-        }
-        .card h3 {
-            margin-top: 0;
-            font-size: 1.05rem;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 0.95rem;
-            color: #039116;
-        }
-        a.button {
-            display: inline-block;
-            background: #032052;
-            color: #5326e5;
-            text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
+        :root{--bg:#0f1724;--card:#0b1220;--accent:#06b6d4;--text:#e6eef6}
+        *{box-sizing:border-box;margin:0;padding:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial}
+        body{background:linear-gradient(180deg,#071028 0%,var(--bg) 100%);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}
+        .container{width:100%;max-width:1000px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);border-radius:12px;overflow:hidden;display:grid;grid-template-columns:320px 1fr}
+        aside{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:2rem}
+        .avatar{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#7c3aed);margin-bottom:1rem;display:flex;align-items:center;justify-content:center;font-weight:700;color:#001}
+        h1{font-size:1.4rem;margin-bottom:0.25rem}
+        p.role{color:rgba(230,238,246,0.8);margin-bottom:1rem}
+        .contact{font-size:0.9rem;color:rgba(230,238,246,0.85)}
+        main{padding:2rem}
+        .section{margin-bottom:1.5rem}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+        .card{background:var(--card);padding:1rem;border-radius:8px;border:1px solid rgba(255,255,255,0.02)}
+        .skills{display:flex;flex-wrap:wrap;gap:0.5rem}
+        .chip{background:rgba(255,255,255,0.03);padding:0.35rem 0.6rem;border-radius:999px;font-size:0.85rem}
+        a.button{display:inline-block;margin-top:0.6rem;padding:0.6rem 0.9rem;background:var(--accent);color:#042;border-radius:8px;text-decoration:none;font-weight:600}
+        footer{padding:1rem;text-align:center;color:rgba(230,238,246,0.6);font-size:0.85rem}
+        @media (max-width:780px){.container{grid-template-columns:1fr}aside{display:flex;align-items:center;gap:1rem}}
     </style>
 </head>
 <body>
-    <header>
-        <h1>Joseph Okisai</h1>
-        <p>Web designer and developer building clean, user-friendly websites.</p>
-    </header>
-    <main>
-        <section>
-            <h2>About Me</h2>
-            <p>I am a front-end developer with a passion for creating engaging digital experiences. I enjoy working with HTML, CSS, and JavaScript to bring ideas to life.</p>
-        </section>
-        <section>
-            <h2>Skills</h2>
-            <div class="grid skills">
-                <div class="card">
-                    <h3>HTML & CSS</h3>
-                    <p>Responsive layouts, grid, flexbox, and modern styling techniques.</p>
-                </div>
-                <div class="card">
-                    <h3>JavaScript</h3>
-                    <p>Interactive interfaces, DOM manipulation, and simple web applications.</p>
-                </div>
-                <div class="card">
-                    <h3>UI Design</h3>
-                    <p>Clean visual design, usability, and basic branding principles.</p>
-                </div>
+    <div class="container">
+        <aside>
+            <div style="display:flex;flex-direction:column;align-items:center;text-align:center">
+                <div class="avatar">AB</div>
+                <h1>Joseph Okisai</h1>
+                <p class="role">Frontend Developer • UI/UX Enthusiast</p>
+                <p class="contact">Location: City, Country<br>Email: alex@example.com</p>
+                <a class="button" href="#contact">Contact me</a>
             </div>
-        </section>
-        <section>
-            <h2>Projects</h2>
-            <div class="grid projects">
-                <div class="card">
-                    <h3>Portfolio Site</h3>
-                    <p>A personal website showcasing work, experience, and contact information.</p>
+        </aside>
+        <main>
+            <section class="section">
+                <h2 style="margin-bottom:0.6rem">About Me</h2>
+                <div class="card">I build accessible, responsive web interfaces with a focus on performance and clean design. I enjoy learning new technologies and collaborating on meaningful projects.</div>
+            </section>
+
+            <section class="section">
+                <h2 style="margin-bottom:0.6rem">Projects</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Portfolio Site</h3>
+                        <p style="color:rgba(230,238,246,0.8)">Personal site built with HTML/CSS and small JS for interactions.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Task Manager</h3>
+                        <p style="color:rgba(230,238,246,0.8)">A simple task management app with local storage and drag-and-drop.</p>
+                    </div>
                 </div>
+            </section>
+
+            <section class="section">
+                <h2 style="margin-bottom:0.6rem">Skills</h2>
                 <div class="card">
-                    <h3>Landing Page</h3>
-                    <p>A product landing page with a responsive hero section and pricing details.</p>
+                    <div class="skills">
+                        <span class="chip">HTML</span>
+                        <span class="chip">CSS</span>
+                        <span class="chip">JavaScript</span>
+                        <span class="chip">React</span>
+                        <span class="chip">Figma</span>
+                    </div>
                 </div>
+            </section>
+
+            <section id="contact" class="section">
+                <h2 style="margin-bottom:0.6rem">Contact</h2>
                 <div class="card">
-                    <h3>Blog Template</h3>
-                    <p>A modern blog layout with articles, categories, and clean typography.</p>
+                    <form style="display:grid;gap:0.6rem">
+                        <input type="text" placeholder="Your name" style="padding:0.6rem;border-radius:6px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--text)">
+                        <input type="email" placeholder="Email" style="padding:0.6rem;border-radius:6px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--text)">
+                        <textarea placeholder="Message" rows="4" style="padding:0.6rem;border-radius:6px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--text)"></textarea>
+                        <button type="submit" class="button">Send</button>
+                    </form>
                 </div>
-            </div>
-        </section>
-        <section>
-            <h2>Contact</h2>
-            <p>If you'd like to work together, feel free to reach out.</p>
-            <a class="button" href="mailto:hello@example.com">Send an Email</a>
-        </section>
-    </main>
-    <footer>
-        © 2026 Joseph Okisai. Built with HTML and CSS.
-    </footer>
+            </section>
+        </main>
+    </div>
+    <footer>© 2026 Joseph Okisai — Built with simple HTML & CSS</footer>
 </body>
 </html>
