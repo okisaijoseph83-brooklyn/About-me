@@ -5,159 +5,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
         }
-        
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #1d4ed8;
             color: white;
-            padding: 2rem;
+            padding: 40px 20px;
             text-align: center;
         }
-        
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        
-        nav {
-            background: #333;
-            padding: 1rem;
-            text-align: center;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 1.5rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav a:hover {
-            color: #667eea;
-        }
-        
-        main {
-            max-width: 1200px;
+        .container {
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 20px;
         }
-        
-        section {
-            margin-bottom: 3rem;
+        .section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+            margin-bottom: 20px;
+            padding: 24px;
         }
-        
-        section h2 {
-            color: #ea6666;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 0.5rem;
+        .section h2 {
+            margin-top: 0;
+            color: #0f172a;
         }
-        
-        .project {
-            background: #f4f4f4;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .skills li {
+            background: #e2e8f0;
             border-radius: 8px;
-            transition: transform 0.3s;
-        }
-        
-        .project:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(227, 42, 42, 0.1);
-        }
-        
-        .project h3 {
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-        
-        footer {
-            background: #130707;
-            color: white;
+            padding: 12px;
             text-align: center;
-            padding: 1.5rem;
-            margin-top: 3rem;
         }
-        
-        footer a {
-            color: #4c6cfd;
-            text-decoration: none;
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+        .project-card {
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 18px;
+            background: #f8fafc;
+        }
+        .project-card h3 {
+            margin-top: 0;
+        }
+        .contact p {
+            margin: 10px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 14px 0;
+            color: #475569;
+        }
+        @media (max-width: 640px) {
+            header {
+                padding: 30px 16px;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Joseph Okisai</h1>
-        <p>Full Stack Developer | Web Designer</p>
+        <div class="container">
+            <h1>Joseph Okisai</h1>
+            <p>Frontend developer creating clean and user-friendly web experiences.</p>
+        </div>
     </header>
-    
-    <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    
-    <main>
-        <section id="about">
+    <main class="container">
+        <section class="section">
             <h2>About Me</h2>
-            <p>Welcome to my portfolio! I'm a passionate developer with expertise in building modern web applications. I love creating user-friendly interfaces and solving complex problems with clean, efficient code.</p>
+            <p>I build modern websites with a focus on responsive design, accessibility, and smooth interactions. I enjoy learning new technologies and solving problems with elegant solutions.</p>
         </section>
-        
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="project">
-                <h3>Project 1: E-Commerce Website</h3>
-                <p>Built a fully functional e-commerce platform using React and Node.js with payment integration.</p>
-            </div>
-            <div class="project">
-                <h3>Project 2: Weather App</h3>
-                <p>Created a responsive weather application using HTML, CSS, and JavaScript with real-time API data.</p>
-            </div>
-            <div class="project">
-                <h3>Project 3: Task Manager</h3>
-                <p>Developed a task management tool with local storage, featuring add, edit, and delete functionality.</p>
-            </div>
-        </section>
-        
-        <section id="skills">
+        <section class="section">
             <h2>Skills</h2>
-            <ul>
-                <li>HTML5 & CSS3</li>
+            <ul class="skills">
+                <li>HTML</li>
+                <li>CSS</li>
                 <li>JavaScript</li>
                 <li>React</li>
-                <li>Node.js</li>
-                <li>MongoDB</li>
+                <li>Git</li>
                 <li>Responsive Design</li>
             </ul>
         </section>
-        
-        <section id="contact">
+        <section class="section">
+            <h2>Projects</h2>
+            <div class="projects">
+                <div class="project-card">
+                    <h3>Portfolio Site</h3>
+                    <p>A responsive portfolio website showcasing work and skills with a clean layout and intuitive navigation.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Task Tracker</h3>
+                    <p>A simple task management app built with JavaScript for adding, editing, and completing tasks.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Landing Page</h3>
+                    <p>A marketing landing page built with modern CSS techniques and mobile-first design.</p>
+                </div>
+            </div>
+        </section>
+        <section class="section contact">
             <h2>Contact</h2>
-            <p>Email: <a href="mailto:joseph.okisai@example.com">joseph.okisai@example.com</a></p>
-            <p>GitHub: <a href="https://github.com/josephokisai">github.com/josephokisai</a></p>
-            <p>LinkedIn: <a href="https://linkedin.com/in/josephokisai">linkedin.com/in/josephokisai</a></p>
+            <p>Email: hello@example.com</p>
+            <p>LinkedIn: linkedin.com/in/janedoe</p>
         </section>
     </main>
-    
     <footer>
-        <p>&copy; 2026 Joseph Okisai. All rights reserved.</p>
+        <p>© 2026 Jane Doe. All rights reserved.</p>
     </footer>
 </body>
 </html>
