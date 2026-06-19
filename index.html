@@ -1,77 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Creative Portfolio</title>
     <style>
+        :root {
+            --bg: #0d1117;
+            --surface: #161b22;
+            --text: #e6edf3;
+            --muted: #8b96a3;
+            --accent: #58a6ff;
+            --accent-soft: rgba(88, 166, 255, 0.16);
+            font-family: Inter, system-ui, sans-serif;
+        }
+        * {
+            box-sizing: border-box;
+        }
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #dce8f7;
-            color: #1f2937;
-        }
-        header {
-            background: #1d4ed8;
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
+            background: radial-gradient(circle at top, rgba(88,166,255,.15), transparent 35%),
+                        radial-gradient(circle at bottom right, rgba(255,118,165,.12), transparent 30%),
+                        var(--bg);
+            color: var(--text);
+            line-height: 1.6;
         }
         .container {
-            max-width: 1000px;
+            width: min(1120px, calc(100% - 2rem));
             margin: 0 auto;
-            padding: 20px;
+            padding: 1rem 0 2rem;
         }
-        .section {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-            margin-bottom: 20px;
-            padding: 24px;
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(18px);
+            background: rgba(13,17,23,0.82);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
-        .section h2 {
-            margin-top: 0;
-            color: #0f172a;
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
         }
-        .skills {
+        .nav-brand {
+            font-size: 1.1rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.4rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--muted);
+            transition: color 0.2s ease;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text);
+        }
+        .hero {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 12px;
+            grid-template-columns: 1.3fr 0.9fr;
+            gap: 2rem;
+            align-items: center;
+            padding: 4rem 0 3rem;
+        }
+        .hero-content h1 {
+            margin: 0;
+            font-size: clamp(2.75rem, 4vw, 4.5rem);
+            line-height: 0.9;
+        }
+        .hero-content p {
+            max-width: 620px;
+            margin: 1.5rem 0 0;
+            color: var(--muted);
+        }
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        .button, .button-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.95rem 1.75rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .button {
+            background: var(--accent);
+            color: #0d1117;
+        }
+        .button-secondary {
+            border: 1px solid rgba(255,255,255,0.12);
+            color: var(--text);
+            background: rgba(255,255,255,0.04);
+        }
+        .button:hover,
+        .button-secondary:hover {
+            transform: translateY(-2px);
+        }
+        .hero-figure {
+            position: relative;
+            min-height: 430px;
+            background: linear-gradient(135deg, rgba(88,166,255,0.28), rgba(255,118,165,0.22));
+            border-radius: 32px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 2rem;
+            display: flex;
+            align-items: flex-end;
+        }
+        .hero-figure::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top left, rgba(255,255,255,0.18), transparent 30%);
+            pointer-events: none;
+        }
+        .hero-card {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            gap: 1.2rem;
+        }
+        .stats {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .stat {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 1rem 1.2rem;
+            min-width: 130px;
+        }
+        .stat strong {
+            display: block;
+            font-size: 1.25rem;
+            margin-bottom: 0.35rem;
+        }
+        section {
+            padding: 4rem 0;
+        }
+        .section-heading {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+        .section-heading span {
+            display: inline-flex;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(88,166,255,0.16);
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .section-heading h2 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .about-grid,
+        .services-grid,
+        .projects-grid,
+        .testimonial-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        .about-grid {
+            grid-template-columns: 1.25fr 0.75fr;
+            align-items: center;
+        }
+        .about-text p,
+        .about-text ul {
+            color: var(--muted);
+        }
+        .about-list {
             list-style: none;
             padding: 0;
-            margin: 0;
-        }
-        .skills li {
-            background: #e2e8f0;
-            border-radius: 8px;
-            padding: 12px;
-            text-align: center;
-        }
-        .projects {
+            margin: 1.5rem 0 0;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 16px;
+            gap: 0.85rem;
         }
-        .project-card {
-            border: 1px solid #cbd5e1;
-            border-radius: 10px;
-            padding: 18px;
-            background: #e1ecf7;
+        .about-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 0.95rem 1rem;
         }
-        .project-card h3 {
+        .about-list li::before {
+            content: '•';
+            color: var(--accent);
+        }
+        .services-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        .card {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 28px;
+            padding: 1.7rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(88,166,255,0.24);
+        }
+        .card h3 {
             margin-top: 0;
+            margin-bottom: 0.85rem;
         }
-        .contact p {
-            margin: 10px 0;
+        .card p {
+            margin: 0;
+            color: var(--muted);
         }
-        footer {
-            text-align: center;
-            padding: 14px 0;
-            color: #475569;
+        .project-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            background: linear-gradient(135deg, rgba(88,166,255,0.18), rgba(255,118,165,0.15));
+            padding: 1.5rem;
+            min-height: 240px;
+            border: 1px solid rgba(255,255,255,0.08);
         }
-        @media (max-width: 640px) {
-            header {
-                padding: 30px 16px;
+        .project-item h3 {
+            margin: 0 0 1rem;
+        }
+        .project-item small {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        .project-item p {
+            color: var(--muted);
+            margin-bottom: 1.4rem;
+        }
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .project-tags span {
+            background: rgba(255,255,255,0.08);
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            color: var(--text);
+        }
+        .testimonial-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .testimonial {
+            display: grid;
+            gap: 1rem;
+            padding: 1.85rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 28px;
+        }
+        .testimonial p {
+            margin: 0;
+            color: var(--muted);
+        }
+        .testimonial-footer {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: grid;
+            place-items: center;
+            color: #0d1117;
+            font-weight: 700;
+        }
+        .contact-card {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1.2fr 0.8fr;
+        }
+        .contact-details {
+            display: grid;
+            gap: 1rem;
+        }
+        .contact-details div {
+            padding: 1.2rem 1.3rem;
+            border-radius: 24px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .contact-details strong {
+            display: block;
+            margin-bottom: 0.35rem;
+        }
+        form {
+            display: grid;
+            gap: 1rem;
+        }
+        input, textarea {
+            width: 100%;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.04);
+            color: var(--text);
+            padding: 1rem 1.1rem;
+            font: inherit;
+        }
+        textarea {
+            min-height: 170px;
+            resize: vertical;
+        }
+        .footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 2rem 0 1rem;
+            color: var(--muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        @media (max-width: 860px) {
+            .hero,
+            .about-grid,
+            .contact-card,
+            .testimonial-grid,
+            .services-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-figure {
+                min-height: 320px;
+            }
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+        @media (max-width: 600px) {
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 0.9rem;
+            }
+            .hero {
+                gap: 1.5rem;
+            }
+            .hero-figure {
+                padding: 1.5rem;
+            }
+            .section-heading h2 {
+                font-size: 1.75rem;
             }
         }
     </style>
@@ -79,51 +382,186 @@
 <body>
     <header>
         <div class="container">
-            <h1>Joseph Okisai</h1>
-            <p>Frontend developer creating clean and user-friendly web experiences.</p>
+            <nav>
+                <div class="nav-brand">Nova Studio</div>
+                <div class="nav-links">
+                    <a href="#about" class="active">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
         </div>
     </header>
     <main class="container">
-        <section class="section">
-            <h2>About Me</h2>
-            <p>I build modern websites with a focus on responsive design, accessibility, and smooth interactions. I enjoy learning new technologies and solving problems with elegant solutions.</p>
-        </section>
-        <section class="section">
-            <h2>Skills</h2>
-            <ul class="skills">
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <li>React</li>
-                <li>Git</li>
-                <li>Responsive Design</li>
-            </ul>
-        </section>
-        <section class="section">
-            <h2>Projects</h2>
-            <div class="projects">
-                <div class="project-card">
-                    <h3>Portfolio Site</h3>
-                    <p>A responsive portfolio website showcasing work and skills with a clean layout and intuitive navigation.</p>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <p>Hi, I'm a multidisciplinary designer & developer</p>
+                <h1>Building digital experiences that feel effortless.</h1>
+                <p>I create brands, products, and web applications for ambitious teams. My work is focused on accessible interactions, polished visuals, and meaningful digital storytelling.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="button">Work with me</a>
+                    <a href="#projects" class="button-secondary">See projects</a>
                 </div>
-                <div class="project-card">
-                    <h3>Task Tracker</h3>
-                    <p>A simple task management app built with JavaScript for adding, editing, and completing tasks.</p>
+                <div class="stats">
+                    <div class="stat"><strong>8+</strong> years experience</div>
+                    <div class="stat"><strong>35+</strong> products shipped</div>
+                    <div class="stat"><strong>17</strong> global clients</div>
                 </div>
-                <div class="project-card">
-                    <h3>Landing Page</h3>
-                    <p>A marketing landing page built with modern CSS techniques and mobile-first design.</p>
+            </div>
+            <div class="hero-figure">
+                <div class="hero-card">
+                    <div class="card">
+                        <h3>Brand identity</h3>
+                        <p>Creating coherent systems for digital brands so every interaction feels crafted and memorable.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Product design</h3>
+                        <p>Designing high-impact web experiences, dashboards, and apps focused on clarity and conversion.</p>
+                    </div>
                 </div>
             </div>
         </section>
-        <section class="section contact">
-            <h2>Contact</h2>
-            <p>Email: joseph@example.com</p>
-            <p>LinkedIn: linkedin.com/in/josephokisai</p>
+        <section id="about">
+            <div class="section-heading">
+                <span>01</span>
+                <h2>About me</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>I'm a versatile creative engineer with a passion for solving complex design problems. I combine thoughtful visual design with clean, responsive front-end development. My process is built around collaboration, iteration, and delivering work that feels polished and intuitive.</p>
+                    <ul class="about-list">
+                        <li>Product strategy & UX design</li>
+                        <li>Responsive web development</li>
+                        <li>Brand systems & storytelling</li>
+                        <li>Motion and interaction design</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Skills overview</h3>
+                    <p>Figma, React, Next.js, Tailwind, CSS animations, HTML5, JavaScript, API integrations, accessibility, performance optimization.</p>
+                </div>
+            </div>
+        </section>
+        <section id="services">
+            <div class="section-heading">
+                <span>02</span>
+                <h2>Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="card">
+                    <h3>Visual design</h3>
+                    <p>Concept, art direction, UI systems, and motion design that match the ambition of your product.</p>
+                </div>
+                <div class="card">
+                    <h3>Web development</h3>
+                    <p>Responsive websites and interactive apps built with fast, maintainable code and modern frameworks.</p>
+                </div>
+                <div class="card">
+                    <h3>Brand strategy</h3>
+                    <p>Identity systems, naming, messaging, and digital storytelling designed to turn your vision into a strong presence.</p>
+                </div>
+            </div>
+        </section>
+        <section id="projects">
+            <div class="section-heading">
+                <span>03</span>
+                <h2>Selected projects</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-item">
+                    <small>Web platform</small>
+                    <h3>Launchpad Studio</h3>
+                    <p>Design and development of a creative portfolio platform with dynamic animations, responsive layouts, and editorial content design.</p>
+                    <div class="project-tags">
+                        <span>React</span>
+                        <span>UX</span>
+                        <span>Animation</span>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <small>Product design</small>
+                    <h3>Flow Analytics</h3>
+                    <p>Dashboard design for a SaaS analytics product, focusing on clarity, user onboarding, and rapid data exploration.</p>
+                    <div class="project-tags">
+                        <span>Figma</span>
+                        <span>Data</span>
+                        <span>Design system</span>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <small>Brand identity</small>
+                    <h3>Orbit Labs</h3>
+                    <p>Crafted an identity system, digital guidelines, and marketing site for a modern technology consultancy.</p>
+                    <div class="project-tags">
+                        <span>Brand</span>
+                        <span>Strategy</span>
+                        <span>Web</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="section-heading">
+                <span>04</span>
+                <h2>Testimonials</h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p>"The team crafted a polished digital identity that elevated our product experience. The whole process felt collaborative and efficient."</p>
+                    <div class="testimonial-footer">
+                        <div class="avatar">EL</div>
+                        <div>
+                            <strong>Elena Marsh</strong>
+                            <span>Founder, PIXEL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p>"Their design thinking helped us simplify a complex platform while keeping it visually compelling. Delivery was quick and the quality exceeded expectations."</p>
+                    <div class="testimonial-footer">
+                        <div class="avatar">RS</div>
+                        <div>
+                            <strong>Ravi Singh</strong>
+                            <span>Product Lead, NovaTech</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="section-heading">
+                <span>05</span>
+                <h2>Contact</h2>
+            </div>
+            <div class="contact-card">
+                <div class="contact-details">
+                    <div>
+                        <strong>Let's build something</strong>
+                        <p>Tell me about your project, timeline, and goals. I'm available for freelance and contract work.</p>
+                    </div>
+                    <div>
+                        <strong>Email</strong>
+                        <p>hello@novastudio.dev</p>
+                    </div>
+                    <div>
+                        <strong>Location</strong>
+                        <p>Remote / Worldwide</p>
+                    </div>
+                </div>
+                <form>
+                    <input type="text" placeholder="Your name" required>
+                    <input type="email" placeholder="Your email" required>
+                    <input type="text" placeholder="Project subject" required>
+                    <textarea placeholder="Tell me about your project" required></textarea>
+                    <button type="submit" class="button">Send message</button>
+                </form>
+            </div>
         </section>
     </main>
-    <footer>
-        <p>© 2026 Joseph Okisai. All rights reserved.</p>
+    <footer class="container footer">
+        <p>Designed by Nova Studio • Built with care.</p>
+        <a href="#home">Back to top</a>
     </footer>
 </body>
 </html>
