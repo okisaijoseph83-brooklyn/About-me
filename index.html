@@ -3,202 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retail Shop</title>
+    <title>Simple Portfolio</title>
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            color: #333;
-            background: #f7f7f7;
-        }
-        header {
-            background: #1a73e8;
-            color: rgb(183, 240, 11);
-            padding: 20px 40px;
-        }
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-        nav {
-            margin-top: 10px;
-        }
-        nav a {
-            color: white;
-            margin-right: 20px;
-            text-decoration: none;
-            font-size: 0.95rem;
-        }
-        .hero {
-            background: url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-            color: white;
-            padding: 120px 40px;
-            text-align: center;
-        }
-        .hero h1 {
-            margin: 0;
-            font-size: 3rem;
-        }
-        .hero p {
-            font-size: 1.15rem;
-            max-width: 700px;
-            margin: 20px auto 0;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        .section-title {
-            margin-bottom: 20px;
-            font-size: 1.9rem;
-            color: #1a73e8;
-        }
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-        }
-        .product-card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-            overflow: hidden;
-        }
-        .product-card img {
-            width: 100%;
-            display: block;
-        }
-        .product-card-content {
-            padding: 18px;
-        }
-        .product-card h3 {
-            margin: 0 0 8px;
-            font-size: 1.2rem;
-        }
-        .product-card p {
-            margin: 0 0 14px;
-            color: #555;
-            line-height: 1.5;
-        }
-        .product-card .price {
-            font-weight: 700;
-            color: #1a73e8;
-        }
-        .about, .contact {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-            margin-bottom: 30px;
-        }
-        .contact-form {
-            display: grid;
-            gap: 16px;
-        }
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-        .contact-form button {
-            width: fit-content;
-            background: #59c607;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-        footer {
-            text-align: center;
-            padding: 20px 40px;
-            background: #222;
-            color: #ddd;
-        }
-        @media (max-width: 600px) {
-            header, .hero, footer {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-            .hero {
-                padding-top: 90px;
-                padding-bottom: 90px;
-            }
-        }
+        :root{--bg:#0f1724;--card:#0b1220;--accent:#4f46e5;--muted:#94a3b8;color: #e6eef8}
+        *{box-sizing:border-box}
+        body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,var(--bg),#071023);color:var(--color,#e6eef8);line-height:1.4}
+        .container{max-width:900px;margin:40px auto;padding:24px}
+        header{display:flex;gap:16px;align-items:center}
+        .avatar{width:96px;height:96px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:28px;color:white}
+        h1{margin:0;font-size:28px}
+        p.lead{color:var(--muted);margin:6px 0 18px}
+        .grid{display:grid;grid-template-columns:1fr 280px;gap:20px}
+        .card{background:var(--card);padding:18px;border-radius:12px}
+        .skills{display:flex;flex-wrap:wrap;gap:8px}
+        .skill{background:#07122a;padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+        .projects{display:flex;flex-direction:column;gap:12px}
+        .project{background:#061226;padding:12px;border-radius:10px}
+        footer{margin-top:24px;text-align:center;color:var(--muted);font-size:14px}
+        @media(max-width:760px){.grid{grid-template-columns:1fr}} 
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">Okisai's Retail Shop</div>
-        <nav>
-            <a href="#products">Products</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <h1>Your neighborhood retail shop</h1>
-        <p>Find everyday essentials, gifts, and latest arrivals in one place. Shop quality products with friendly service and fast delivery.</p>
-    </section>
-
-    <main class="container">
-        <section id="products">
-            <h2 class="section-title">Featured Products</h2>
-            <div class="products">
-                <article class="product-card">
-                    <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80" alt="Everyday Essentials">
-                    <div class="product-card-content">
-                        <h3>Everyday Essentials</h3>
-                        <p>Stock up on household items, snacks, drinks, and more for your daily needs.</p>
-                        <div class="price">From Ksh 300</div>
-                    </div>
-                </article>
-                <article class="product-card">
-                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80" alt="Fashion Accessories">
-                    <div class="product-card-content">
-                        <h3>Fashion Accessories</h3>
-                        <p>Discover stylish accessories, seasonal gifts, and trendy items for every budget.</p>
-                        <div class="price">From Ksh 1,000</div>
-                    </div>
-                </article>
-                <article class="product-card">
-                    <img src="https://images.unsplash.com/photo-1523475496153-3d6ccf5a8f26?auto=format&fit=crop&w=800&q=80" alt="Home Goods">
-                    <div class="product-card-content">
-                        <h3>Home Goods</h3>
-                        <p>Refresh your space with cozy decor, kitchen essentials, and everyday home items.</p>
-                        <div class="price">From Ksh 500</div>
-                    </div>
-                </article>
+    <div class="container">
+        <header>
+            <div class="avatar">AB</div>
+            <div>
+                <h1>Alex Brown — Web Developer</h1>
+                <p class="lead">I build clean, accessible websites and simple web apps. Currently focused on HTML, CSS, and JavaScript.</p>
             </div>
-        </section>
+        </header>
 
-        <section id="about" class="about">
-            <h2 class="section-title">About Us</h2>
-            <p>Retail Shop is your local destination for quality products at affordable prices. We offer a curated selection of goods for the home, wardrobe, and lifestyle. Our goal is to make shopping simple, convenient, and enjoyable for everyone.</p>
-        </section>
+        <main class="grid" style="margin-top:20px">
+            <section>
+                <div class="card">
+                    <h2 style="margin:0 0 8px">About Me</h2>
+                    <p style="margin:0 0 12px;color:var(--muted)">Passionate front-end developer with experience creating responsive, user-friendly interfaces. I enjoy turning ideas into pixel-perfect products.</p>
+                    <h3 style="margin:0 0 8px">Projects</h3>
+                    <div class="projects">
+                        <div class="project">
+                            <strong>Portfolio Site</strong>
+                            <div style="color:var(--muted);font-size:13px">A minimal portfolio built with HTML/CSS. Responsive and accessible.</div>
+                        </div>
+                        <div class="project">
+                            <strong>Todo App</strong>
+                            <div style="color:var(--muted);font-size:13px">A small vanilla JS app with localStorage persistence.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-        <section id="contact" class="contact">
-            <h2 class="section-title">Contact Us</h2>
-            <p>Need help finding something or want to place an order? Send us a message and we will get back to you quickly.</p>
-            <form class="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea rows="5" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
-    </main>
+            <aside>
+                <div class="card">
+                    <h3 style="margin-top:0">Contact</h3>
+                    <p style="color:var(--muted);margin:6px 0">Email: alex@example.com</p>
+                    <h3 style="margin:12px 0 6px">Skills</h3>
+                    <div class="skills">
+                        <span class="skill">HTML</span>
+                        <span class="skill">CSS</span>
+                        <span class="skill">JavaScript</span>
+                        <span class="skill">React</span>
+                        <span class="skill">Git</span>
+                    </div>
+                </div>
+            </aside>
+        </main>
 
-    <footer>
-        &copy; 2026 Retail Shop. All rights reserved.
-    </footer>
+        <footer>
+            © 2026 Alex Brown — Built with a simple HTML template
+        </footer>
+    </div>
 </body>
 </html>
