@@ -3,74 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Portfolio</title>
+    <title>Market & Style</title>
     <style>
-        :root{--bg:#f2640c;--card:#c5d20b;--accent:#4f46e5;--muted:#0556c7;color: #e6eef8}
-        *{box-sizing:border-box}
-        body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,var(--bg),#071023);color:var(--color,#e6eef8);line-height:1.4}
-        .container{max-width:900px;margin:40px auto;padding:24px}
-        header{display:flex;gap:16px;align-items:center}
-        .avatar{width:96px;height:96px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:28px;color:white}
-        h1{margin:0;font-size:28px}
-        p.lead{color:var(--muted);margin:6px 0 18px}
-        .grid{display:grid;grid-template-columns:1fr 280px;gap:20px}
-        .card{background:var(--card);padding:18px;border-radius:12px}
-        .skills{display:flex;flex-wrap:wrap;gap:8px}
-        .skill{background:#064ee9;padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
-        .projects{display:flex;flex-direction:column;gap:12px}
-        .project{background:#0448bd;padding:12px;border-radius:10px}
-        footer{margin-top:24px;text-align:center;color:var(--muted);font-size:14px}
-        @media(max-width:760px){.grid{grid-template-columns:1fr}} 
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px 30px;
+        }
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 700;
+        }
+        nav {
+            margin-top: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: 500;
+        }
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 30px;
+            background: linear-gradient(135deg, #ff8c00, #f39c12);
+            color: white;
+        }
+        .hero h1 {
+            margin: 0 0 20px;
+            font-size: 2.8rem;
+        }
+        .hero p {
+            max-width: 520px;
+            line-height: 1.6;
+        }
+        .hero button {
+            padding: 14px 24px;
+            border: none;
+            background: #2c3e50;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+        main {
+            padding: 40px 30px;
+        }
+        .section-title {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-left: 5px solid #ff8c00;
+            padding-left: 12px;
+        }
+        .grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .card img {
+            width: 100%;
+            display: block;
+        }
+        .card-content {
+            padding: 18px;
+        }
+        .card-content h3 {
+            margin: 0 0 10px;
+        }
+        .card-content p {
+            margin: 0 0 14px;
+            line-height: 1.5;
+        }
+        .card-content span {
+            font-weight: 700;
+            color: #e67e22;
+        }
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 24px 30px;
+            text-align: center;
+        }
+        @media (max-width: 640px) {
+            .hero {
+                padding: 40px 20px;
+                text-align: center;
+            }
+            nav {
+                margin-top: 15px;
+            }
+            nav a {
+                display: inline-block;
+                margin: 8px 12px 0;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="avatar">AB</div>
-            <div>
-                <h1>Joseph Okisai — Web Developer</h1>
-                <p class="lead">I build clean, accessible websites and simple web apps. Currently focused on HTML, CSS, and JavaScript.</p>
+    <header>
+        <div class="logo">Market & Style</div>
+        <nav>
+            <a href="#groceries">Groceries</a>
+            <a href="#clothes">Clothes</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <section class="hero">
+        <div>
+            <h1>Your neighborhood shop for groceries and fashion</h1>
+            <p>Find fresh groceries, pantry essentials, and modern clothing all in one place. Shop online or visit our store for daily deals and quality products.</p>
+            <button onclick="location.href='#groceries'">Browse Products</button>
+        </div>
+        <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=800&q=80" alt="Groceries and clothing" style="max-width: 520px; border-radius: 18px; box-shadow: 0 14px 30px rgba(0,0,0,0.2);" />
+    </section>
+    <main>
+        <section id="groceries">
+            <h2 class="section-title">Groceries</h2>
+            <div class="grid">
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1516684669134-de6f3ac4a518?auto=format&fit=crop&w=800&q=80" alt="Fresh produce">
+                    <div class="card-content">
+                        <h3>Fresh Produce</h3>
+                        <p>Seasonal fruits and vegetables sourced locally, ready for your weekly meals.</p>
+                        <span>From $1.99</span>
+                    </div>
+                </article>
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=800&q=80" alt="Pantry staples">
+                    <div class="card-content">
+                        <h3>Pantry Essentials</h3>
+                        <p>Rice, pasta, spices, and everyday household staples to keep your kitchen stocked.</p>
+                        <span>Save up to 20%</span>
+                    </div>
+                </article>
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1506807803488-8eafc15370d5?auto=format&fit=crop&w=800&q=80" alt="Beverages">
+                    <div class="card-content">
+                        <h3>Drinks & Snacks</h3>
+                        <p>Soft drinks, juices, healthy snacks, and treats for every occasion.</p>
+                        <span>Special offers</span>
+                    </div>
+                </article>
             </div>
-        </header>
-
-        <main class="grid" style="margin-top:20px">
-            <section>
-                <div class="card">
-                    <h2 style="margin:0 0 8px">About Me</h2>
-                    <p style="margin:0 0 12px;color:var(--muted)">Passionate front-end developer with experience creating responsive, user-friendly interfaces. I enjoy turning ideas into pixel-perfect products.</p>
-                    <h3 style="margin:0 0 8px">Projects</h3>
-                    <div class="projects">
-                        <div class="project">
-                            <strong>Portfolio Site</strong>
-                            <div style="color:var(--muted);font-size:13px">A minimal portfolio built with HTML/CSS. Responsive and accessible.</div>
-                        </div>
-                        <div class="project">
-                            <strong>Todo App</strong>
-                            <div style="color:var(--muted);font-size:13px">A small vanilla JS app with localStorage persistence.</div>
-                        </div>
+        </section>
+        <section id="clothes" style="margin-top: 60px;">
+            <h2 class="section-title">Clothes</h2>
+            <div class="grid">
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=800&q=80" alt="Casual wear">
+                    <div class="card-content">
+                        <h3>Everyday Apparel</h3>
+                        <p>Comfortable tees, jeans, and casual wear designed for daily style.</p>
+                        <span>New arrivals</span>
                     </div>
-                </div>
-            </section>
-
-            <aside>
-                <div class="card">
-                    <h3 style="margin-top:0">Contact</h3>
-                    <p style="color:var(--muted);margin:6px 0">Email: joseph@example.com</p>
-                    <h3 style="margin:12px 0 6px">Skills</h3>
-                    <div class="skills">
-                        <span class="skill">HTML</span>
-                        <span class="skill">CSS</span>
-                        <span class="skill">JavaScript</span>
-                        <span class="skill">React</span>
-                        <span class="skill">Git</span>
+                </article>
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1520975928864-d0f86797f278?auto=format&fit=crop&w=800&q=80" alt="Outerwear">
+                    <div class="card-content">
+                        <h3>Outerwear</h3>
+                        <p>Jackets, hoodies, and coats for cool weather and layering.</p>
+                        <span>Stylish & warm</span>
                     </div>
-                </div>
-            </aside>
-        </main>
-
-        <footer>
-            © 2026 Joseph Okisai — Built with a simple HTML template
-        </footer>
-    </div>
+                </article>
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1520975915900-3f6b3aaf03a2?auto=format&fit=crop&w=800&q=80" alt="Accessories">
+                    <div class="card-content">
+                        <h3>Accessories</h3>
+                        <p>Hats, bags, and essentials to finish every look.</p>
+                        <span>Shop now</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer id="contact">
+        <p>Visit us today or order online. Call us at (123) 456-7890</p>
+        <p>&copy; 2026 Market & Style Retail Shop</p>
+    </footer>
 </body>
 </html>
